@@ -5,12 +5,24 @@ spring:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/EVM_TRANSACTION_SERVICE}
     username: ${DB_USER:testUser}
     password: ${DB_PASSWORD:testPassword}
+    hikari:
+      maximum-pool-size: 30
   flyway:
     enabled: true
     schemas: flyway_schema
     locations: classpath:db/migration
   jpa:
     open-in-view: false
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: ua.kornello.evm_transaction_service.config.BlockTransactionSerializer
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: ua.kornello.evm_transaction_service.config.BlockTransactionDeserializer
+      group-id: transaction-group
 evm:
   node-url: ${EVM_NODE_URL}
   api-key: ${EVM_API_KEY}
+  include-raw-response: true

@@ -6,6 +6,6 @@ CREATE TABLE public.transactions
     value            NUMERIC(30, 0) NOT NULL,
     block_number     BIGINT         NOT NULL,
     raw_block_number VARCHAR        NOT NULL,
-    timestamp        TIMESTAMP      NOT NULL default now(),
+    created_at        TIMESTAMP      NOT NULL default now(),
     CONSTRAINT PK_transactions PRIMARY KEY (hash)
 );
