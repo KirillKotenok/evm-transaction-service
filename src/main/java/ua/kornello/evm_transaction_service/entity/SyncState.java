@@ -13,14 +13,11 @@ import lombok.EqualsAndHashCode;
 import static java.util.Objects.isNull;
 
 @Data
-@EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "sync_state")
+@EqualsAndHashCode(of = "lastProcessedBlock")
 public class SyncState {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sync_state_generator")
-    @SequenceGenerator(name = "sync_state_generator", sequenceName = "sync_state_generator", allocationSize = 50)
-    private Long id;
     @Column(name = "last_processed_block", nullable = false)
     private Long lastProcessedBlock;
 
