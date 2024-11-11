@@ -38,4 +38,4 @@ docker run --network test-network -p 7777:8080 \
     evm-transaction-service:latest
 ```
 
-Healthcheck endpoint: http://localhost:8080/actuator/health
+Healthcheck endpoint: http://{host:port}/actuator/health

@@ -10,5 +10,5 @@ public record BlockTransactionDto(
         BigInteger value,
         BigInteger blockNumber,
         String rawBlockNumber,
-        Timestamp timestamp) {
+        Timestamp createdAt) {
 }
